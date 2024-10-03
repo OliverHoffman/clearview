@@ -19,11 +19,34 @@
         .hover\:bg-blue-700:hover {
             background-color: #1d4ed8;
         }
+        #services {
+            display: flex;
+            justify-content: center;
+        }
+        #service {
+            width: 320px;
+        }
+        .pricing {
+            font-size: 48px;
+            font-weight: 400;
+            padding-top: 30px;
+            padding-bottom: 0;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
     </style>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("V8DJQPXZmhZBzwJxb"); // Replace with your EmailJS user ID
+  })();
+</script>
+
 </head>
 <body class="flex flex-col min-h-screen">
     <header class="px-4 lg:px-6 h-14 flex items-center">
-        <a href="#" class="flex items-center justify-center">
+        <a href="index.html" class="flex items-center justify-center">
             <i data-lucide="droplet" class="h-6 w-6 text-blue-500"></i>
             <span class="ml-2 text-2xl font-bold text-gray-900">ClearView</span>
         </a>
@@ -47,8 +70,8 @@
                         </p>
                     </div>
                     <div class="space-x-4">
-                        <button class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded">Book Now</button>
-                        <button class="bg-white text-blue-600 border border-blue-600 hover:bg-blue-50 px-4 py-2 rounded">Learn More</button>
+                        <a href="#appointment" class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2.5 rounded">Book Now</a>
+                        <a href="#contact" class="bg-white text-blue-600 border border-blue-600 hover:bg-blue-50 px-4 py-2.5 rounded">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -71,12 +94,14 @@
         <section id="services" class="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
             <div class="container px-4 md:px-6 mx-auto">
                 <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">Our Services</h2>
-                <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                    <div class="flex flex-col items-center text-center">
+                <div id="services" class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                    <div  id="service" class="flex flex-col items-center text-center">
                         <i data-lucide="droplet" class="h-12 w-12 text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-bold mb-2">Headlight Defogging</h3>
                         <p class="text-gray-500">Restore clarity to foggy headlights for improved visibility.</p>
+                        <h1 class="pricing"><b>$40</b></h1>
                     </div>
+                    <!--
                     <div class="flex flex-col items-center text-center">
                         <i data-lucide="sparkles" class="h-12 w-12 text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-bold mb-2">Deep Cleaning</h3>
@@ -86,7 +111,7 @@
                         <i data-lucide="clock" class="h-12 w-12 text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-bold mb-2">Quick Service</h3>
                         <p class="text-gray-500">Fast and efficient service to get you back on the road quickly.</p>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </section>
@@ -119,12 +144,12 @@
                     <div class="flex flex-col items-center text-center">
                         <i data-lucide="phone" class="h-12 w-12 text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-bold mb-2">Phone</h3>
-                        <p class="text-gray-500">(555) 123-4567</p>
+                        <p class="text-gray-500">(971) 263-3372</p>
                     </div>
                     <div class="flex flex-col items-center text-center">
                         <i data-lucide="mail" class="h-12 w-12 text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-bold mb-2">Email</h3>
-                        <p class="text-gray-500">info@clearview.com</p>
+                        <p class="text-gray-500">turboxic@icloud.com</p>
                     </div>
                 </div>
             </div>
@@ -134,22 +159,28 @@
                 <div class="flex flex-col items-center space-y-4 text-center">
                     <div class="space-y-2">
                         <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Book an Appointment</h2>
-                        <p class="mx-auto max-w-[600px] text-gray-500 md:text-xl">
-                            Ready to restore your car's visibility? Schedule your appointment now.
-                        </p>
+
                     </div>
                     <div class="w-full max-w-md space-y-2">
-                        <form class="flex flex-col gap-4">
-                            <input type="text" placeholder="Your Name" class="px-3 py-2 border rounded">
-                            <input type="email" placeholder="Your Email" class="px-3 py-2 border rounded">
-                            <input type="tel" placeholder="Your Phone" class="px-3 py-2 border rounded">
-                            <div class="grid grid-cols-2 gap-4">
-                                <input type="date" placeholder="Preferred Date" class="px-3 py-2 border rounded">
-                                <input type="time" placeholder="Preferred Time" class="px-3 py-2 border rounded">
-                            </div>
-                            <textarea placeholder="Any additional concerns or requests?" class="px-3 py-2 border rounded"></textarea>
-                            <button type="submit" class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded">Book Appointment</button>
-                        </form>
+                        <form id="contact-form" class="flex flex-col gap-4">
+    <input type="text" name="name" placeholder="Your Name" class="px-3 py-2 border rounded" required>
+    <input type="email" name="email" placeholder="Your Email" class="px-3 py-2 border rounded" required>
+    <input type="tel" name="phone" placeholder="Your Phone" class="px-3 py-2 border rounded">
+    <textarea name="message" placeholder="Any additional concerns or requests?" class="px-3 py-2 border rounded"></textarea>
+    <button type="submit" class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded">Book Appointment</button>
+</form>
+<script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+            .then(function() {
+                alert('Form sent successfully!');
+            }, function(error) {
+                alert('Failed to send the form. Please try again.');
+            });
+    });
+</script>
+
                     </div>
                 </div>
             </div>
