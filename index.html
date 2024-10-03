@@ -169,17 +169,7 @@
     <textarea name="message" placeholder="Any additional concerns or requests?" class="px-3 py-2 border rounded"></textarea>
     <button type="submit" class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded">Book Appointment</button>
 </form>
-<script>
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-            .then(function() {
-                alert('Form sent successfully!');
-            }, function(error) {
-                alert('Failed to send the form. Please try again.');
-            });
-    });
-</script>
+
 
                     </div>
                 </div>
