@@ -172,13 +172,14 @@
 <script>
     document.getElementById('contact-form').addEventListener('submit', function(event) {
         event.preventDefault();
-        emailjs.sendForm('service_0ue9bxd', 'template_n8j6oup', this)
-            .then(function() {
-                alert('Form sent successfully!');
-            }, function(error) {
-                alert('Failed to send the form. Please try again.');
-            });
+    emailjs.sendForm('service_0ue9bxd', 'template_n8j6oup', this)
+    .then(function() {
+        alert('Form sent successfully!');
+    }, function(error) {
+        console.error('Error:', error); // Log the error for debugging
+        alert('Failed to send the form. Please try again.');
     });
+
 </script>
 
                     </div>
