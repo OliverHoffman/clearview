@@ -38,44 +38,92 @@
     </style>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-      (function() {
-        emailjs.init("V8DJQPXZmhZBzwJxb"); // EmailJS User ID
-      })();
-    
-      function sendEmail(e) {
-        e.preventDefault(); // Prevent the form from refreshing the page
-
-        emailjs.sendForm('service_your_service_id', 'template_n8j6oup', e.target)
-          .then((result) => {
-              alert('Appointment successfully booked!');
-              document.getElementById('contact-form').reset(); // Reset the form after successful submission
-          }, (error) => {
-              alert('Failed to book appointment. Please try again.');
-          });
-      }
+        (function() {
+            emailjs.init("V8DJQPXZmhZBzwJxb");
+        })();
+      
+        function sendEmail(event) {
+            event.preventDefault();
+            emailjs.sendForm('service_yourserviceid', 'template_n8j6oup', event.target)
+                .then(function(response) {
+                    alert('Your appointment request has been sent successfully!');
+                }, function(error) {
+                    alert('Failed to send your appointment request. Please try again.');
+                });
+        }
     </script>
 </head>
 <body class="flex flex-col min-h-screen">
-    <!-- rest of your code... -->
-    <section id="appointment" class="w-full py-12 md:py-24 lg:py-32">
-        <div class="container px-4 md:px-6 mx-auto">
-            <div class="flex flex-col items-center space-y-4 text-center">
-                <div class="space-y-2">
-                    <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Book an Appointment</h2>
-                </div>
-                <div class="w-full max-w-md space-y-2">
-                    <form id="contact-form" class="flex flex-col gap-4" onsubmit="sendEmail(event)">
-                        <input type="text" name="name" placeholder="Your Name" class="px-3 py-2 border rounded" required>
-                        <input type="email" name="email" placeholder="Your Email" class="px-3 py-2 border rounded" required>
-                        <input type="tel" name="phone" placeholder="Your Phone" class="px-3 py-2 border rounded">
-                        <textarea name="message" placeholder="Any additional concerns or requests?" class="px-3 py-2 border rounded"></textarea>
-                        <button type="submit" class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded">Book Appointment</button>
-                    </form>
+    <header class="px-4 lg:px-6 h-14 flex items-center">
+        <a href="index.html" class="flex items-center justify-center">
+            <i data-lucide="droplet" class="h-6 w-6 text-blue-500"></i>
+            <span class="ml-2 text-2xl font-bold text-gray-900">ClearView</span>
+        </a>
+        <nav class="ml-auto flex gap-4 sm:gap-6">
+            <a class="text-sm font-medium hover:underline underline-offset-4" href="#services">Services</a>
+            <a class="text-sm font-medium hover:underline underline-offset-4" href="#benefits">Benefits</a>
+            <a class="text-sm font-medium hover:underline underline-offset-4" href="#contact">Contact</a>
+            <a class="text-sm font-medium hover:underline underline-offset-4" href="#appointment">Appointment</a>
+        </nav>
+    </header>
+
+    <main class="flex-1">
+        <section class="w-full py-12 md:py-24 lg:py-32 bg-blue-50">
+            <div class="container px-4 md:px-6 mx-auto">
+                <div class="flex flex-col items-center space-y-4 text-center">
+                    <div class="space-y-2">
+                        <h1 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+                            Crystal Clear Vision for Your Car
+                        </h1>
+                        <p class="mx-auto max-w-[700px] text-gray-500 md:text-xl">
+                            Professional car light defogging and cleaning services. Enhance your visibility and safety on the road.
+                        </p>
+                    </div>
+                    <div class="space-x-4">
+                        <a href="#appointment" class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2.5 rounded">Book Now</a>
+                        <a href="#contact" class="bg-white text-blue-600 border border-blue-600 hover:bg-blue-50 px-4 py-2.5 rounded">Learn More</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- rest of your code... -->
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
+            <div class="container px-4 md:px-6 mx-auto">
+                <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">Our Services</h2>
+                <div id="services" class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                    <div  id="service" class="flex flex-col items-center text-center">
+                        <i data-lucide="droplet" class="h-12 w-12 text-blue-500 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Headlight Defogging</h3>
+                        <p class="text-gray-500">Restore clarity to foggy headlights for improved visibility.</p>
+                        <h1 class="pricing"><b>$40</b></h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appointment Section -->
+        <section id="appointment" class="w-full py-12 md:py-24 lg:py-32">
+            <div class="container px-4 md:px-6 mx-auto">
+                <div class="flex flex-col items-center space-y-4 text-center">
+                    <div class="space-y-2">
+                        <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Book an Appointment</h2>
+                    </div>
+                    <div class="w-full max-w-md space-y-2">
+                        <form id="contact-form" class="flex flex-col gap-4" onsubmit="sendEmail(event)">
+                            <input type="text" name="name" placeholder="Your Name" class="px-3 py-2 border rounded" required>
+                            <input type="email" name="email" placeholder="Your Email" class="px-3 py-2 border rounded" required>
+                            <input type="tel" name="phone" placeholder="Your Phone" class="px-3 py-2 border rounded">
+                            <textarea name="message" placeholder="Any additional concerns or requests?" class="px-3 py-2 border rounded"></textarea>
+                            <button type="submit" class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded">Book Appointment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
     <footer class="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
         <p class="text-xs text-gray-500">© 2024 ClearView. All rights reserved.</p>
         <nav class="sm:ml-auto flex gap-4 sm:gap-6">
